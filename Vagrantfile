@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+http_proxy = ENV['http_proxy'] || ENV['HTTP_PROXY']
+https_proxy = ENV['https_proxy'] || ENV['HTTPS_PROXY']
+no_proxy = ENV['no_proxy'] || ENV['NO_PROXY']
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
