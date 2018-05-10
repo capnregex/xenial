@@ -28,7 +28,7 @@ package "mysql-server"
 package "postgresql"
 package "postgresql-contrib"
 package "ruby-pg"
-package "libpq"
+package "libpq5"
 package "software-properties-common"
 
 # linux-headers-$(uname -r) 
