@@ -1,6 +1,7 @@
 
 class Proxy
   attr_accessor :env
+
   # http_proxy
   # http_proxy_user
   # http_proxy_pass
@@ -49,8 +50,7 @@ class Proxy
     {
       http: http,
       https: https,
-      no: no,
-      env: env
+      no: no
     }
   end
 

@@ -5,6 +5,8 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 #
 
+##recipe[ubuntu]
+
 package "xubuntu-core"
 package "git"
 package "wget"

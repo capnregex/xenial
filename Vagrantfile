@@ -6,6 +6,13 @@ require_relative 'lib/proxy.rb'
 proxy = Proxy.new ENV
 
 Vagrant.configure("2") do |config|
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http     = proxy.http
+    config.proxy.https    = proxy.https
+    config.proxy.no_proxy = proxy.no
+  end
+
   config.vm.box = "bento/ubuntu-16.04"
 
   config.vm.provider "virtualbox" do |vb|
@@ -16,6 +23,8 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provision "chef_zero", run: :always do |chef|
+    # chef.log_level = 'debug'
+
     chef.cookbooks_path = "cookbooks"
     chef.data_bags_path = "data_bags"
     chef.nodes_path = "nodes"
@@ -24,7 +33,6 @@ Vagrant.configure("2") do |config|
     chef.http_proxy = proxy.http
     chef.https_proxy = proxy.https
     chef.no_proxy = proxy.no
-    chef.json = { host_env: { proxy: proxy.to_h } }
 
     chef.add_recipe "proxy"
     chef.add_recipe "update"
