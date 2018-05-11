@@ -14,7 +14,7 @@ file '/etc/environment' do
     LANG=#{ENV['LANG']}
     http_proxy=#{ENV['http_proxy']}
     HTTP_PROXY=#{ENV['HTTP_PROXY']}
-    https_proxy=#{ENV['httpS_proxy']}
+    https_proxy=#{ENV['https_proxy']}
     HTTPs_PROXY=#{ENV['HTTPS_PROXY']}
     no_proxy=#{ENV['no_proxy']}
     NO_PROXY=#{ENV['NO_PROXY']}

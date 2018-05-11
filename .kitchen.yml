@@ -21,10 +21,10 @@ suites:
     https_proxy: 'http://proxy.example.com/'
     no_proxy: 'localhost'
     run_list:
-      - recipe[proxy::default]
+      - recipe[proxy]
       - recipe[ubuntu]
-      - recipe[update::default]
-      - recipe[xubuntu::default]
+      - recipe[update]
+      - recipe[xubuntu]
     verifier:
       inspec_tests:
         - test/integration/proxy
