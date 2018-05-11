@@ -22,6 +22,7 @@ suites:
     no_proxy: 'localhost'
     run_list:
       - recipe[proxy::default]
+      - recipe[ubuntu]
       - recipe[update::default]
       - recipe[xubuntu::default]
     verifier:

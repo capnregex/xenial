@@ -35,6 +35,7 @@ Vagrant.configure("2") do |config|
     chef.no_proxy = proxy.no
 
     chef.add_recipe "proxy"
+    chef.add_recipe "ubuntu"
     chef.add_recipe "update"
     chef.add_recipe "xubuntu"
     chef.add_recipe "xubuntu::start"
