@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provision "chef_zero", run: :always do |chef|
-    # chef.log_level = 'debug'
+    chef.log_level = 'debug'
 
     chef.cookbooks_path = "cookbooks"
     chef.data_bags_path = "data_bags"
