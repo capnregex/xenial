@@ -5,22 +5,30 @@
 
 require 'yaml'
 
-file '/etc/environment' do
-  content <<~ENV
-    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-    TEST="Testing the ENV content"
-    HOSTUSERNAME=#{ENV['USERNAME']}
-    HOSTUSER=#{ENV['USER']}
-    LANG=#{ENV['LANG']}
-    http_proxy=#{ENV['http_proxy']}
-    HTTP_PROXY=#{ENV['HTTP_PROXY']}
-    https_proxy=#{ENV['https_proxy']}
-    HTTPs_PROXY=#{ENV['HTTPS_PROXY']}
-    no_proxy=#{ENV['no_proxy']}
-    NO_PROXY=#{ENV['NO_PROXY']}
-  ENV
+template '/etc/environment' do
+  source 'environment.erb'
   mode '0644'
   owner 'root'
   group 'root'
+  variables(
+    path_env: node['env']['path'],
+    username: node['env']['username'],
+    user: node['env']['user'],
+    lang: node['env']['lang'],
+    http_proxy: node['proxy']['http'],
+    https_proxy: node['proxy']['https'],
+    no_proxy: node['proxy']['no']
+  )
+end
+
+template '/etc/apt/apt.conf' do
+  source 'apt.conf.erb'
+  mode '0644'
+  owner 'root'
+  group 'root'
+  variables(
+    http_proxy: node['proxy']['http'],
+    https_proxy: node['proxy']['https']
+  )
 end
 

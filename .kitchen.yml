@@ -27,7 +27,7 @@ suites:
       - recipe[xubuntu]
     verifier:
       inspec_tests:
-        - test/integration/proxy
-        # - test/integration/default
+        # - test/integration/proxy
+        - test/integration/default
     attributes:
 
