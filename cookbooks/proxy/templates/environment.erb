@@ -1,6 +1,8 @@
-PATH=<%= @path_env %>
-<% if @lang -%>
-LANG=<%= @lang %>
+<% if env = node[:env] -%>
+PATH=<%= env[:path] %>
+<% if lang = env[:lang] -%>
+LANG=<%= lang %>
+<%- end %>
 <%- end %>
 <% if @http_proxy -%>
 http_proxy=<%= @http_proxy %>
