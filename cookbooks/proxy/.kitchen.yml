@@ -16,10 +16,22 @@ platforms:
   - name: ubuntu-16.04
 
 suites:
-  - name: default
+  - name: no_proxy
     run_list:
       - recipe[proxy::default]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/integration/no_proxy
     attributes:
+  - name: with_proxy
+    run_list:
+      - recipe[proxy::default]
+    verifier:
+      inspec_tests:
+        - test/integration/with_proxy
+    attributes:
+      proxy:
+        http: http://proxy.example.com/
+        https: http://sproxy.example.com/
+        'no': localhost:example.com
+

@@ -18,6 +18,26 @@ describe 'proxy::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
+
+    it 'creates /etc/environment' do
+      expect(chef_run).to create_template('/etc/environment').with(
+        source: 'environment.erb',
+        mode: '0644',
+        owner: 'root',
+        group: 'root'
+      )
+    end
+
+    it 'creates /etc/apt/apt.conf' do
+      expect(chef_run).to create_template('/etc/apt/apt.conf').with(
+        source: 'apt.conf.erb',
+        mode: '0644',
+        owner: 'root',
+        group: 'root'
+      )
+    end
+
   end
+
 end
 
