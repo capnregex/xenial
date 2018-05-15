@@ -20,3 +20,4 @@ describe 'proxy::default' do
     end
   end
 end
+

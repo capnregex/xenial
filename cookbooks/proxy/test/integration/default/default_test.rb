@@ -6,5 +6,14 @@
 # found at http://inspec.io/docs/reference/resources/
 
 describe file('/etc/environment') do
-  its('content') { is_expected.to match /^HTTP_PROXY=/ }
+  context "default without proxy" do
+    its('content') { is_expected.not_to match /PROXY=/ }
+  end
 end
+
+describe file('/etc/apt/apt.conf') do
+  context "default without proxy" do
+    its('content') { is_expected.not_to match /::Proxy/ }
+  end
+end
+
