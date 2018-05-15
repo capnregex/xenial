@@ -4,15 +4,17 @@ PATH=<%= env[:path] %>
 LANG=<%= lang %>
 <%- end %>
 <%- end %>
-<% if @http_proxy -%>
-http_proxy=<%= @http_proxy %>
-HTTP_PROXY=<%= @http_proxy %>
+<% if proxy = node[:proxy] -%>
+<% if http_proxy = proxy[:http] -%>
+http_proxy=<%= http_proxy %>
+HTTP_PROXY=<%= http_proxy %>
 <%- end %>
-<% if @https_proxy -%>
-https_proxy=<%= @https_proxy %>
-HTTPS_PROXY=<%= @https_proxy %>
+<% if https_proxy = proxy[:https] -%>
+https_proxy=<%= https_proxy %>
+HTTPS_PROXY=<%= https_proxy %>
 <%- end %>
-<% if @no_proxy -%>
-no_proxy=<%= @no_proxy %>
-NO_PROXY=<%= @no_proxy %>
+<% if no_proxy = proxy[:no] -%>
+no_proxy=<%= no_proxy %>
+NO_PROXY=<%= no_proxy %>
+<%- end %>
 <%- end %>

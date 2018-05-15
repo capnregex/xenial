@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provision "chef_zero", run: :always do |chef|
-    chef.log_level = 'debug'
+    # chef.log_level = 'debug'
 
     chef.cookbooks_path = "cookbooks"
     chef.data_bags_path = "data_bags"
@@ -33,6 +33,8 @@ Vagrant.configure("2") do |config|
     chef.http_proxy = proxy.http
     chef.https_proxy = proxy.https
     chef.no_proxy = proxy.no
+
+    chef.json = { proxy: proxy.to_h }
 
     chef.add_recipe "proxy"
     chef.add_recipe "ubuntu"
