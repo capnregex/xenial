@@ -7,7 +7,9 @@
 
 ##recipe[ubuntu]
 
-package "xubuntu-core"
+package "xubuntu-core" do
+  timeout 30 * 60 # big package, give it a half hour
+end
 package "git"
 package "wget"
 package "curl"
